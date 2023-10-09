@@ -1,0 +1,102 @@
+\documentclass[UTF8]{ctexart}
+
+\usepackage{amsmath, geometry, amssymb, framed, amsthm}
+\geometry{left=2cm, right=2cm, top=2cm, bottom=2cm}
+
+\newtheorem{theorem}{定理}%[subsection]
+\newtheorem{definition}{定义}%[subsection]
+\newtheorem{lemma}{引理}%[subsection]
+\newtheorem{corollary}{推论}%[subsection]
+\newtheorem{example}{例}%[subsection]
+\newtheorem{proposition}{命题}%[subsection]
+\newtheorem{remark}{注记}%[subsection]
+\newtheorem{axiom}{公理}%[section]
+
+\title{\vspace{-2cm}Homework for Chapter 1 (Theoretical Questions)}
+\author{王笑同 \quad 3210105450 \quad 数学与应用数学（强基计划）2101}
+\date{\today}
+
+\linespread{1.9}
+
+\begin{document}
+
+\pagestyle{plain}
+
+\maketitle
+
+\textbf{Problem I. \& Problem II. }
+
+These two problems can be extended to general cases. 
+
+Suppose we are working on interval $[a_0,b_0]$, with initial length $l_0:=b_0-a_0$. By definition of bisection method, The length of interval at the $n$th step is
+\[l_n=\dfrac{b_0-a_0}{2^n},\]
+
+and $\dfrac{l_n}{2}=\dfrac{b_0-a_0}{2^{n+1}}$ is the supremum of the distance between the root $r$ and the midpoint of the interval.
+
+Take $[a_0,b_0]=[1.5, 3.5]$, we have $l_n=2^{1-n}$, $\dfrac{l_n}{2}=2^{-n}$.
+
+Let $\alpha$ be the root. To ensure the \textbf{relative} error $\dfrac{l_n}{2}\bigg / \alpha$ no more than $\varepsilon$, we need to have
+\[\dfrac{l_n}{2\alpha}\leqslant\dfrac{l_n}{2a_0}=\dfrac{b_0-a_0}{2^{n+1}a_0}<\varepsilon,\]
+
+which is equivalent to
+\[n\geqslant \dfrac{\log(b_0-a_0)-\log\varepsilon-\log a_0}{\log 2}.\]
+
+\quad
+
+\textbf{Problem III.}
+
+Since $p'(x)=12x^2-4x$, with the iteration formula $x_{n+1}=x_n-\dfrac{p(x_n)}{p'(x_n)}$, we have
+\[\begin{aligned}
+    x_1&=x_0-\dfrac{p(x_0)}{p'(x_0)}=-1-\dfrac{-3}{16}=-\dfrac{21}{16}=-0.8125,\\
+    x_2&=x_1-\dfrac{p(x_1)}{p'(x_1)}\approx -0.7708,\\
+    x_3&=x_2-\dfrac{p(x_2)}{p'(x_2)}\approx -0.7688,\\
+    x_4&=x_3-\dfrac{p(x_3)}{p'(x_3)}\approx -0.7688.
+\end{aligned}\]
+
+\newpage
+
+\textbf{Problem IV.}
+
+Let the root be $\alpha$, and $e_n=x_n-\alpha$. Then there is $\xi\in[x_n,\alpha]$ such that
+\[0=f(x_n)+(\alpha-x_n)f'(\xi).\]
+
+That is, $f(x_n)=f'(\xi)e_n$. Then
+\[e_{n+1}=x_{n+1}-\alpha=x_n-\dfrac{f(x_n)}{f'(x_n)}-\alpha=e_n-\dfrac{f(x_n)}{f'(x_n)}=e_n\left(1-\dfrac{f'(\xi_n)}{f'(x_0)}\right).\]
+
+By comparing with $e_{n+1}=Ce_n^s$, we have
+\[s=1,\qquad C=1-\dfrac{f'(\xi)}{f'(x_0)}.\]
+
+\quad
+
+\textbf{Problem V.}
+
+The interation clearly converges when $x_0=0$. And, if $|x_0|<\dfrac\pi2$, then $|x_n|=|\arctan x_{n-1}|<\dfrac\pi2$, so it is a bounded sequence.
+
+For $x_0\in\left(0,\dfrac\pi2\right)$, we have $x_{n+1}-x_n=\arctan x_n-x_n<0$, so the sequence decreases. By the monotone convergence theorem, the sequence converges. For $x_0\in\left(-\dfrac\pi2,0\right)$, we have similar results since $x<\arctan x$ when $x<0$.
+
+\quad
+
+\textbf{Problem VI.}
+
+Write $x_1=\dfrac1p$, $x_{n+1}=\dfrac{1}{x_n+p}$. It suffices to show $x:=\lim\limits_{n\to\infty} x_n$ exists. 
+
+By induction, it is easy to show that $x_n\in(0,1)$, $n\in\mathbb{Z}_+$.
+
+Let $f(x)=\dfrac{1}{x+p}$, and then $f'(x)=-\dfrac{1}{(x+p)^2}$. It follows that
+\[\lambda:=\max\limits_{x\in[0,1]}|f'(x)|<\dfrac{1}{p^2}<1.\]
+
+By theorem 1.39, $f$ has a unique fixed point $\alpha$ on $[0,1]$, and the sequence $\{x_n\}$ converges to $\alpha$. From $\alpha=\dfrac{1}{\alpha+p}$, we see that $x=\alpha=\dfrac{-p+\sqrt{p^2+4}}{2}$.
+
+\newpage
+
+\textbf{Problem VII.}
+
+Let $\alpha$ be the root in $[a_0,b_0]$. We have similar estimates as in Problem I and Problem II:
+\[\text{Relative error\,}=\dfrac{|\alpha-l_n|}{|\alpha|}\leqslant\dfrac{l_n}{2^n|\alpha|}=\dfrac{b_0-a_0}{2^n|\alpha|}.\]
+
+Assume the relative error can be controlled within $\varepsilon$, we have
+\[n\geqslant\dfrac{\log(b_0-a_0)-\log\varepsilon-\log|\alpha|}{\log 2}-1.\]
+
+However, $n\to\infty$ as $\varepsilon\to0^+$, leading to contradiction. Thus the relative error can't be appropriately measured.
+
+\end{document}
