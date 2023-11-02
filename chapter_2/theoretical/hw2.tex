@@ -1,0 +1,163 @@
+\documentclass[UTF8]{ctexart}
+
+\usepackage{amsmath, geometry, amssymb, framed, amsthm, float}
+\geometry{left=2cm, right=2cm, top=2cm, bottom=2cm}
+
+\newtheorem{theorem}{定理}%[subsection]
+\newtheorem{definition}{定义}%[subsection]
+\newtheorem{lemma}{引理}%[subsection]
+\newtheorem{corollary}{推论}%[subsection]
+\newtheorem{example}{例}%[subsection]
+\newtheorem{proposition}{命题}%[subsection]
+\newtheorem{remark}{注记}%[subsection]
+\newtheorem{axiom}{公理}%[section]
+
+\title{\vspace{-2cm}Homework for Chapter 2 (Theoretical Questions)}
+\author{王笑同 \quad 3210105450 \quad 数学与应用数学（强基计划）2101}
+\date{\today}
+
+\linespread{1.5}
+
+\begin{document}
+
+\pagestyle{plain}
+
+\maketitle
+
+\textbf{Problem I.}
+
+In this case, $f_0:=f(x_0)=1$, $f_1:=f(x_1)=\dfrac12$. Using Newton's formula, $p_1(f)$ can be expressed as
+\[p_1(f;x)=f_0+\dfrac{f_1-f_0}{x_1-x_0}(x-x_0)=1-\dfrac12(x-1)=-\dfrac12x+\dfrac32.\]
+
+By $f'(x)=-\dfrac{1}{x^2}$, $f''(x)=\dfrac{2}{x^3}$, we have
+\[\dfrac1x-\left(-\dfrac12x+\dfrac32\right)=\dfrac{1}{\xi^3(x)}(x-1)(x-2)\implies \xi(x)=\sqrt[3]{2x}.\]
+
+Since $\xi(x)$ monotonically increases within $x\in[1,2]$, we have $\min \xi(x)=\sqrt[3]2$, $\max\xi(x)=\sqrt[3]{4}$, and $\max f''(\xi(x))=\max \dfrac1x=1$.
+
+\quad
+
+\textbf{Problem II. }
+
+Let $\ell_k(x)=\displaystyle\prod\limits_{i=0,i\neq k}^n\dfrac{(x-x_i)^2}{(x_k-x_i)^2}$. Clearly, $\ell_k(x)\in\mathbb{P}_{2n}^+$. And for every $i\neq k$, we have $\ell_k(x_i)=0$, $\ell_k(x_k)=1$. Let
+\[P(x)=\sum_{k=0}^n f_k\ell_k(x),\]
+
+and we can check that $p(x_i)=f_i,\ i=1,2,\dots,n$.
+
+\quad
+
+\textbf{Problem III. }
+
+For $n=0$, clearly $f[t]=\mathrm{e}^t$. Assume the statement holds for $n-1$, then by induction hypothesis,
+\[\begin{aligned}
+    f[t,t+1,\dots,t+n]&=\dfrac{f[t+1,t+2,\dots,t+n]-f[t,t+1,\dots,t+n-1]}{n}
+    \\&=\dfrac{\frac{(\mathrm{e}-1)^{n-1}}{(n-1)!}\mathrm{e}^{t+1}-\frac{(\mathrm{e-1}^{n-1})}{(n-1)!}\mathrm{e}^{t}}{n}=\dfrac{(\mathrm{e}-1)^n}{n!}\mathrm{e}^t.
+\end{aligned}\]
+
+Substitute $t=0$, we have $f[0,1,\dots,n]=\dfrac{(\mathrm{e}-1)^n}{n!}=\dfrac{f^{(n)}(\xi)}{n!}$, which implies $\xi=n\ln(\mathrm{e}-1)\approx 0.541n>\dfrac n2$. So $\xi$ is located to the right of the midpoint.
+
+\newpage
+
+\textbf{Problem IV. }
+
+The table of divided differences is as follows:
+\[\begin{array}{c|cccc}
+    0 & 5 &  &  &  \\
+    1 & 3 & -2 &  &  \\
+    3 & 5 & 1 & 1 &  \\
+    4 & 12 & 7 & 2 & \frac14
+\end{array}\]
+
+By Newton's formula, we have
+\[p_3(f;x)=5-2x+x(x-1)+\dfrac14x(x-1)(x-3).\]
+
+We can use $\mathrm{argmin}\ p_3(f;x)$ to estimate $x_{\min}$. By solving $0=p_3'(f;x)=-2+2x-1+\dfrac14[(x-1)(x-3)+x(x-1)+x(x-3)]=\dfrac34(x^2-3)$, we have $x=\sqrt3$ (since $x$ is limited within $(1,3)$). So $x\min\approx \sqrt3$.
+
+\quad
+
+\textbf{Problem V. }
+
+The following table shows the result:
+
+\begin{table}[htbp]
+    \centering
+    \begin{tabular}{c|cccccc}
+        0 & 0 &  &  &  &  &  \\
+        1 & 1 & 1 &  &  &  &  \\
+        1 & 1 & 7 & 6 &  &  &  \\
+        1 & 1 & 7 & 21 & 15 &  &  \\
+        2 & 128 & 127 & 120 & 99 & 42 & \\
+        2 & 128 & 448 & 321 & 201 & 102 & 30 \\
+    \end{tabular}
+\end{table}
+
+So $f[0,1,1,1,2,2]=30$. Since $f^{(5)}(x)=2520x^2$, we have $2520\xi^2=30$ for some $\xi$. That is, $\xi \approx 0.1091$.
+
+\quad
+
+\textbf{Problem VI. }
+
+The table of divided differences is as follows:
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{c|ccccc}
+        0 & 0 &  &  &  &    \\
+        1 & 2 & 1 &  &  &    \\
+        1 & 2 & -1 & 2 &  &    \\
+        3 & 0 & -1 & 0 & $\frac23$ &    \\
+        3 & 0 & 0 & $\frac12$ & $\frac14$ & $-\frac5{36}$ 
+    \end{tabular}
+\end{table}
+
+which give the Hermite polynomial
+\[p(x)=1+x-2x(x-1)+\dfrac23x(x-1)^2-\dfrac{5}{36}x(x-1)^2(x-3).\]
+
+We can estimate that $f(2)\approx p(2)=\dfrac{11}{18}$.
+
+By theorem 2.37 and substitue $x=2$, we have  
+\[|f(x)-p(x)|=\left|\dfrac{f^{(5)}(\xi)}{5!}x(x-1)^2(x-3)^2\right|=\left|\dfrac{f^{(5)}(\xi)}{60}\right|\leqslant\dfrac{M}{60}.\]
+
+\quad
+
+\textbf{Problem VII.}
+
+The two equations hold for $k=0$. Assume that they holds for $k-1$, we have
+\[\begin{aligned}
+    \Delta^k f(x)=\Delta(\Delta^{k-1} f(x))=\Delta((k-1)!h^{k-1}f[x_0,x_1,\dots,x_{k-1}])=k!h^kf[x_0,x_1,\dots,x_k],\\
+    \nabla^k f(x)=\nabla(\nabla^{k-1} f(x))=\nabla((k-1)!h^{k-1}f[x_0,x_{-1},\dots,x_{-(k-1)}])=k!h^kf[x_0,x_{-1},\dots,x_{-k}].
+\end{aligned}\]
+
+\quad
+
+\textbf{Problem VIII.}
+
+By definition and the continuity of divided differences, we have
+\[\begin{aligned}
+    \dfrac{\partial}{\partial x_0}f[x_0,x_1,\dots,x_n]&=\lim_{h\to 0}\dfrac{f[x_0+h,x_1,\dots,x_n]-f[x_0,x_1,\dots,x_n]}{h}\\&=\lim_{h\to 0}f[x_0,x_0+h,x_1,\dots,x_n]
+    \\&=f[x_0,x_0,x_1,\dots,x_n].
+\end{aligned}\]
+
+\quad
+
+\textbf{Problem IX.}
+
+Write $x=\dfrac{b-a}{2}x'+\dfrac{a+b}{2}$, such that $x'\in[-1,1]$. Then
+\[\min\max_{x\in[a,b]}|a_0x^n+\cdots+a_n|=\min\max_{x'\in[-1,1]}|a_0'x'^n+\cdots+a_n'|=\dfrac{1}{2^{n-1}}|a_0|\]
+
+by Corollary 2.47.
+
+\quad
+
+\textbf{Problem X.}
+
+\begin{align*}
+    Write \| P_n(z) \|_\infty &= \frac{|f_n(z)|_\infty}{|T_n(x)|_\infty} = \frac{1}{|T_n(x)|}. \\
+    \text{Suppose that } \|P\|_\infty &< \|P_n\|_\infty = \frac{1}{|T_n(x)|}. \\
+    \text{Let } r(n) &= P(n) - P_n(n), \\
+    r(x) &= P(x) - P_n(x) = 1 - 1 = 0. \\
+    \text{Thus, } r(n) &\text{ has at least } n+1 \text{ zero points, leading to contradiction.} \\
+    \text{Hence for all } P \in P^x_n, \|P_n\|_\infty &\leq \|P\|_\infty.
+\end{align*}
+    
+
+\end{document}
