@@ -1,0 +1,3 @@
+# Problem A
+
+The Python code has been executed, and the functions \( f(x) \), \( g(x) \), and \( h(x) \) have been plotted across the interval \([0.99, 1.01]\). Each plot shows the behavior of the function near 1.0 on a magnified scale. The differences in the plots are due to the numerical instability that arises from the different forms of the polynomial, despite them being theoretically equivalent. This demonstrates how the representation of a function can affect the accuracy of its computed values due to the finite precision of floating-point arithmetic.
