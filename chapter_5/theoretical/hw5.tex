@@ -1,0 +1,210 @@
+\documentclass[UTF8]{ctexart}
+
+\usepackage{amsmath, geometry, amssymb, framed, amsthm, float}
+\geometry{left=2cm, right=2cm, top=2cm, bottom=2cm}
+
+\newtheorem{theorem}{定理}%[subsection]
+\newtheorem{definition}{定义}%[subsection]
+\newtheorem{lemma}{引理}%[subsection]
+\newtheorem{corollary}{推论}%[subsection]
+\newtheorem{example}{例}%[subsection]
+\newtheorem{proposition}{命题}%[subsection]
+\newtheorem{remark}{注记}%[subsection]
+\newtheorem{axiom}{公理}%[section]
+
+\newcommand{\dif}{\mathrm{d}}
+\newcommand{\avg}[1]{\left\langle #1 \right\rangle}
+\newcommand{\norm}[1]{\left\| #1 \right\|}
+
+\title{\vspace{-2cm}Homework for Chapter 2 (Theoretical Questions)}
+\author{王笑同 \quad 3210105450 \quad 数学与应用数学（强基计划）2101}
+\date{\today}
+
+\linespread{1.65}
+
+\begin{document}
+
+\pagestyle{plain}
+
+\maketitle
+
+\textbf{Problem I.}
+
+It is clear that $\mathcal{C}[a,b]$ is a vector space. We need to show that it is an inner product space.
+
+(1) Real positivity:
+
+\[
+	\forall u \in \mathcal{C}[a,b],\quad \avg{u,u} = \int_a^b \rho(t) u(t) \overline{u(t)} \dif t =
+	\int_a^b \rho(t) |u(t)|^2 \dif t \geq 0.
+\]
+
+(2) Definiteness:
+
+\[
+	\avg{u,u} = 0 \Leftrightarrow \rho(t) |u(t)|^2 = 0
+	\Leftrightarrow |u(t)|^2 = 0
+	\Leftrightarrow u=0
+\]
+
+
+(3) Linearity in the first slot:
+
+\[
+	\begin{aligned}
+		 & \forall u,v,w\in \mathcal{C}[a,b],\quad
+		\avg{u+w,v}   = \int_a^b \rho(t)(u(t) + w(t)) \overline{v(x)} \dif t
+		=  \int_a^b \rho(t)u(t)\overline{v(t)} \dif t + \int_a^b \rho(t)w(t)\overline{w(t)} \dif t
+		= \avg{u,v} + \avg{w,v}                                                  \\
+		 & \forall c\in \mathcal{C},\quad \forall u,v \in \mathcal{C}[a,b],\quad
+		\avg{cu,v} = c\int_a^b\rho(t)u(t)\overline{v(t)} \dif t = c \avg{u,v}
+	\end{aligned}
+\]
+
+(4) conjugate symmetry:
+
+\[
+	\forall u,v \in \mathcal{C}[a,b] \quad
+	\avg{u,v} =\int_{a}^{b}\rho(t)u(t)\overline{v(t)} \dif t\\
+	=\overline{\int_a^b \overline{\rho(x)u(x)\overline{v(x)}} \dif x}\\
+	=\overline{\int_a^b \rho(x) v(x) \overline{u(x)} \dif x}\\
+	=\overline{\avg{v,u}}
+\]
+
+We also need to verify the requirements of a norm,
+
+(1) real positivity:
+
+\[
+	\norm{u}_2 = \left( \int_a^b \rho(t) |u(t)|^2 \dif t \right)^{1/2}   \geq 0,\quad \text{with } \norm{u}_2=0\Leftrightarrow u\equiv 0.
+\]
+
+(2) homogeneity:
+\[
+	\forall c \in \mathbb{C},\quad \norm{cu}_2 = \left( \int_a^b \rho(t) |cu(t)|^2 \dif t\right)^{1/2}
+	= |c| \left( \int_a^b \rho(t) |u(t)|^2 \dif t \right)^{1/2} =|c| \norm{u}_2
+\]
+
+(3) triangle inequality:
+\[
+	\forall u,v \in \mathcal{C}[a,b],\quad \norm{u+v}_2
+	= \left( \int_a^b \rho(x) |u(x) + v(x)|^2 \dif x \right)^{1/2}
+\]
+\[
+	\leq \left( \int_a^b \rho(x) |u(x)|^2 \dif x \right)^{1/2}
+	+\left( \int_a^b \rho(x) |v(x)|^2 \dif x \right)^{1/2}            \\
+	= \norm{u}_2 + \norm{v}_2
+\]
+
+\quad
+
+\textbf{Problem II.}
+
+By definition, $T_n(x) = \cos(n \arccos(x))$,
+
+(a) For any $m$, $n$, we have
+\[
+	\begin{aligned}
+		\left\langle  T_m,T_n  \right\rangle
+		 & =\int_{-1}^{1} \rho(t)T_n(t)\overline{T_{m}(t)} dt                              \\
+		 & =\int_{-1}^{1}\dfrac{\cos(n \arccos t)\cos(m\arccos t)}{\sqrt{1-t^2}} dt        \\
+		 & =\int_{0}^{\pi} \cos(m\theta) \cos(n\theta) d\theta                             \\
+		 & =\int_{0}^{\pi}\dfrac{\cos(m\theta + n\theta)}{\cos(m\theta - n\theta)} d\theta \\
+		 & = \begin{cases}
+			\cos \dfrac{\pi}{2}, & m = n \neq 0 \\
+			0,                   & m\neq n      \\
+			\pi,                 & m = n =0     \\
+		\end{cases}
+	\end{aligned}
+\]
+
+Therefore, ${T_n}$ are orthogonal.
+
+(b) We have $T_0(x)=1 $, $ T_1(x)=x $ and $T_2(x) = 2x^2-1$. After normalization, we obtain $T_0^*(x) = \dfrac{1}{\sqrt{\pi}}$ , $T_1^*(x) = \sqrt{\dfrac{\pi}{2}}x$ and $T_2^*(x)=\sqrt{\dfrac{2}{\pi}}(2x^2-1)$.
+
+\quad
+
+\textbf{Problem III.}
+
+(a) With the basis $(T_0^*,T_1^*,T_2^*)$,the Fourier coefficients are $\avg{y,T_0^*} = \dfrac{2}{\sqrt{\pi}}$, $\avg{y,T_1^*} = 0$ , $\avg{y,T_2^*} = -\dfrac{2}{3}\sqrt{\dfrac{2}{\pi}}$, the approximate function is $\hat{\phi}(x) = \dfrac{2}{\sqrt{\pi}}T_0^* + 0T_1^* + -\dfrac{2}{3}\sqrt{\dfrac{2}{\pi}}T_2^* = \dfrac{10}{3\pi} -\dfrac{8}{3\pi}x^2$.
+
+(b) Since
+\[
+	G(1,x,x^2) =
+	\left[ {\begin{array}{ccc}
+					\avg{1,1} & \avg{1,x} & \avg{1,x^2} \\
+					\avg{1,1} & \avg{1,x} & \avg{1,x^2} \\
+					\avg{1,1} & \avg{1,x} & \avg{1,x^2}
+				\end{array} } \right]
+	=\left[ {\begin{array}{ccc}
+					\pi            & 0              & \dfrac{\pi}{2}  \\
+					0              & \dfrac{\pi}{2} & 0               \\
+					\dfrac{\pi}{2} & 0              & \dfrac{3\pi}{2}
+				\end{array} } \right],
+\]
+\[ c = (\avg{y,1} , \avg{y,x} , \avg{y,x^2} )^{\mathrm{T}} = (2,0,3)^{\mathrm{T}},\]
+
+By solving the equation $G^{\mathrm{T}}a=c$, we obtain $a = (\dfrac{10}{3\pi} , 0 , -\dfrac{8}{3\pi})^{\mathrm{T}}$. Hence the approximate function is $\hat{\phi}(x) = \dfrac{10}{3\pi} -\dfrac{8}{3\pi}x^2$.
+
+\quad
+
+\textbf{Problem IV. }
+
+(a) Using the monomials $(1,x,x^2)$, with inner product$\avg{u,v} = \sum_i^{12}u(t_i)v(t_i)$, we have
+\[ u_1=v_1=1, \norm{v_1}=\sqrt{12} , u_1^* = \dfrac{1}{2\sqrt{3},}\]
+\[v_2 = u_2 -\avg{u_2,u_1^*}u_1^* = x - \dfrac{13}{2}, u_1^* = \dfrac{1}{\sqrt{143}}(x-\dfrac{13}{2}),\]
+\[v_3 = u_3 - \avg{u_3,u_1^*}u_1^* - \avg{u_3,u_2^*}u_2^* = x^2 -13x + \dfrac{91}{3}, u_3^* = \sqrt{\dfrac{3}{4004}}(x^2-13x+\dfrac{91}{3}).\]
+
+(b) The best approximate function is
+\[
+	\begin{aligned}
+		\hat{\varphi}(x) & = \avg{y,u_1^*}u_1^* +\avg{y,u_2^*}u_2^* + \avg{y,u_3^*}u_3^* \\
+		                 & = \dfrac{831}{\sqrt{3}}u_1^* + \dfrac{589}{\sqrt{143}}u_2^*
+		+ \dfrac{12068\sqrt{3}}{\sqrt{4004}}u_3^*                                        \\
+		                 & \approx 9.042x^2 - 113.4266x+386.0013
+	\end{aligned}
+\]
+
+(c) The orthonormal polynomials can be reused but the normal equation cannot be reused. Due to we need to recalculated $G$ and solving equation but the previous method just renew index of basis, therefore orthonormal polynomials has advantage over normal equations.
+
+\quad
+
+\textbf{Problem V.}
+
+\begin{proof}[Proof of Thm 5.60]
+	(PDI-1) For any $x\in\mathbb{F}^n$, we have
+	\[\begin{aligned}
+			AA^{+}x=A\left(\sum_{j=1}^r\dfrac{1}{\sigma_j}\avg{x,v_j}u_j\right)=A\dfrac{\sigma_j}{\sigma_j}x=Ax.
+		\end{aligned}\]
+
+	Hence $AA^{+}A=A$ since $x$ is arbitrary.
+
+	(PDI-2) For $j=1,2,\dots,r$, $A^{+}AA^{+}v_j=A^{+}A\dfrac{1}{\sigma_j}u_j=A^{+}v_j$; for $j=r+1,r+2,\dots, n$, $A^+AA^+v_j=0=A^+v_j$.
+
+	(PDI-3) From above conclusions, for $v\in\mathbb{F}^m$,
+	\[AA^+v=\mathrm{diag}(1,\dots,1,0,\dots,0)\begin{pmatrix}
+			v_1 \\\vdots\\v_r\\\vdots\\v_m
+		\end{pmatrix}=\begin{pmatrix}
+			v_1 \\\vdots\\v_m\\0\\\vdots\\0
+		\end{pmatrix}.\]
+
+	Hence $(AA^+)^*=AA^+$. Similarly we have $(A^+A)^*=A^+A$
+\end{proof}
+
+\begin{proof}[Proof of Lemma 5.61]
+	Let \( A \) be a matrix with linearly independent columns. Then the product \( A^*A \) is invertible. To show this, consider any vector \( x \) in the kernel of \( A^*A \), such that \( A^*Ax = 0 \). Pre-multiplying by \( x^* \) gives \( x^*A^*Ax = 0 \), which implies \( (Ax)^*(Ax) = 0 \). Therefore, \( Ax = 0 \). Since \( A \) has linearly independent columns, this implies \( x = 0 \), and the kernel of \( A^*A \) only contains the zero vector, making \( A^*A \) full rank and invertible.
+
+	Now, for any matrix \( A \) with linearly independent columns, the pseudoinverse \( A^+ \) is given by \( A^+ = (A^*A)^{-1}A^* \). This is a left inverse of \( A \) because:
+	\begin{align*}
+		A^+A & = (A^*A)^{-1}A^*A \\
+		     & = I.
+	\end{align*}
+
+	Similarly, if \( A \) has linearly independent rows, then \( AA^* \) is invertible, and the pseudoinverse \( A^+ \) is given by \( A^+ = A^*(AA^*)^{-1} \), which is a right inverse of \( A \) because:
+	\begin{align*}
+		AA^+ & = AA^*(AA^*)^{-1} \\
+		     & = I.
+	\end{align*}
+\end{proof}
+
+\end{document}
