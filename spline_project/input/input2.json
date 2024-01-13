@@ -1,0 +1,13 @@
+{
+    "splineType": "PPSpline",
+    "dimension": 2,
+    "order": 3,
+    "points": [
+        [1, 1], [2, 4], [3, 0], [5, -2], [5.5, 1]
+    ],
+    "boundaryCondition": "SecondDerivative",
+    "boundaryValues": [
+        -1.0,
+        1.0
+    ]
+}

@@ -1,0 +1,13 @@
+{
+    "splineType": "BSpline",
+    "dimension": 2,
+    "order": 2,
+    "points": [
+        [1, 1], [2, 4], [3, 0], [5, -2], [5.5, 1]
+    ],
+    "boundaryCondition": "Natural",
+    "boundaryValues": [
+        0.0,
+        0.0
+    ]
+}
